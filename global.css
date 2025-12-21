@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Dark Neo-Glass Theme Tokens */
+        --background: 265 84% 10%;
+        /* Deep Violet (#1e1b4b but darker/richer) */
+        --foreground: 210 40% 98%;
+        /* White */
+
+        --card: 265 50% 15%;
+        /* Dark Violet/Indigo Card base */
+        --card-foreground: 210 40% 98%;
+        --card-opacity: 0.25;
+        /* Glass effect opacity */
+
+        --popover: 265 84% 10%;
+        --popover-foreground: 210 40% 98%;
+
+        --primary: 263 90% 51%;
+        /* Vibrant Purple */
+        --primary-foreground: 210 40% 98%;
+
+        --secondary: 217 19% 27%;
+        --secondary-foreground: 210 40% 98%;
+
+        --muted: 217 19% 27%;
+        --muted-foreground: 215 20% 65%;
+
+        --accent: 263 90% 60%;
+        --accent-foreground: 210 40% 98%;
+
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 217 19% 27%;
+        --input: 217 19% 27%;
+        --ring: 263 90% 51%;
+
+        --radius: 0.75rem;
+    }
+}
+
+@layer utilities {
+    .glass {
+        @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
+    }
+
+    .glass-card {
+        @apply bg-black/20 backdrop-blur-xl border border-white/10 shadow-xl;
+    }
+
+    .text-glow {
+        text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+        /* Violet glow */
+    }
+}

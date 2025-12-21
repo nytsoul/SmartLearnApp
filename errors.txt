@@ -1,0 +1,70 @@
+﻿app/(auth)/parent-login.tsx(6,23): error TS2307: Cannot find module '@/components/ui/Input' or its corresponding type declarations.
+app/(auth)/parent-login.tsx(7,24): error TS2307: Cannot find module '@/components/ui/Button' or its corresponding type declarations.
+app/(auth)/parent-login.tsx(149,48): error TS7006: Parameter 'text' implicitly has an 'any' type.
+app/(auth)/parent-login.tsx(210,48): error TS7006: Parameter 'text' implicitly has an 'any' type.
+app/(auth)/parent-login.tsx(223,48): error TS7006: Parameter 'text' implicitly has an 'any' type.
+app/(auth)/teacher-login.tsx(5,24): error TS2307: Cannot find module '@/components/ui/Button' or its corresponding type declarations.
+app/(auth)/teacher-login.tsx(6,23): error TS2307: Cannot find module '@/components/ui/Input' or its corresponding type declarations.
+app/(auth)/teacher-login.tsx(136,52): error TS7006: Parameter 'text' implicitly has an 'any' type.
+app/(auth)/teacher-login.tsx(172,52): error TS7006: Parameter 'text' implicitly has an 'any' type.
+app/(auth)/teacher-login.tsx(185,52): error TS7006: Parameter 'text' implicitly has an 'any' type.
+app/(dashboard)/_layout.tsx(8,53): error TS2353: Object literal may only specify known properties, and 'animationEnabled' does not exist in type 'ExtendedStackNavigationOptions | ((prop: { route: RouteProp<ParamListBase, string>; navigation: any; }) => ExtendedStackNavigationOptions)'.
+app/(dashboard)/parent-dashboard.tsx(194,61): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: ViewProps): View', gave the following error.
+    Type '{ width: `${number}%` | "null%"; }' is not assignable to type 'StyleProp<ViewStyle>'.
+      Types of property 'width' are incompatible.
+        Type '`${number}%` | "null%"' is not assignable to type 'DimensionValue | undefined'.
+          Type '"null%"' is not assignable to type 'DimensionValue | undefined'.
+  Overload 2 of 2, '(props: ViewProps, context: any): View', gave the following error.
+    Type '{ width: `${number}%` | "null%"; }' is not assignable to type 'StyleProp<ViewStyle>'.
+      Types of property 'width' are incompatible.
+        Type '`${number}%` | "null%"' is not assignable to type 'DimensionValue | undefined'.
+          Type '"null%"' is not assignable to type 'DimensionValue | undefined'.
+app/(dashboard)/parent-dashboard.tsx(223,61): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: ViewProps): View', gave the following error.
+    Type '{ width: `${number}%` | "null%"; }' is not assignable to type 'StyleProp<ViewStyle>'.
+      Types of property 'width' are incompatible.
+        Type '`${number}%` | "null%"' is not assignable to type 'DimensionValue | undefined'.
+          Type '"null%"' is not assignable to type 'DimensionValue | undefined'.
+  Overload 2 of 2, '(props: ViewProps, context: any): View', gave the following error.
+    Type '{ width: `${number}%` | "null%"; }' is not assignable to type 'StyleProp<ViewStyle>'.
+      Types of property 'width' are incompatible.
+        Type '`${number}%` | "null%"' is not assignable to type 'DimensionValue | undefined'.
+          Type '"null%"' is not assignable to type 'DimensionValue | undefined'.
+app/(dashboard)/subject.tsx(4,24): error TS2307: Cannot find module '@/components/ui/Button' or its corresponding type declarations.
+app/(features)/achievements.tsx(5,24): error TS2307: Cannot find module '@/components/ui/Button' or its corresponding type declarations.
+app/(features)/daily-challenge.tsx(6,24): error TS2307: Cannot find module '@/components/ui/Button' or its corresponding type declarations.
+app/(features)/leaderboard.tsx(5,24): error TS2307: Cannot find module '@/components/ui/Button' or its corresponding type declarations.
+app/(features)/quiz-mode.tsx(83,13): error TS2353: Object literal may only specify known properties, and 'quizzesTaken' does not exist in type '{ quizCompleted?: boolean | undefined; perfectScore?: boolean | undefined; timedQuizTime?: number | undefined; flashcardsReviewed?: number | undefined; }'.
+app/(features)/quiz-mode.tsx(83,43): error TS2339: Property 'quizzesTaken' does not exist on type 'StudentProfile'.
+app/(features)/quiz-mode.tsx(88,30): error TS2345: Argument of type 'Badge[]' is not assignable to parameter of type 'SetStateAction<Badge | null>'.
+app/(features)/quiz-mode.tsx(95,13): error TS2353: Object literal may only specify known properties, and 'quizzesTaken' does not exist in type 'StudentProfile'.
+app/(features)/quiz-mode.tsx(95,43): error TS2339: Property 'quizzesTaken' does not exist on type 'StudentProfile'.
+app/(features)/quiz-mode.tsx(98,23): error TS2345: Argument of type '{ id: string; studentId: string; subjectId: string; score: number; totalQuestions: number; correctAnswers: number; timeSpent: number; completedAt: string; coinsEarned: number; xpEarned: number; }' is not assignable to parameter of type 'QuizResult'.
+  Property 'standard' is missing in type '{ id: string; studentId: string; subjectId: string; score: number; totalQuestions: number; correctAnswers: number; timeSpent: number; completedAt: string; coinsEarned: number; xpEarned: number; }' but required in type 'QuizResult'.
+app/(features)/quiz-mode.tsx(191,21): error TS2322: Type '{ badge: Badge | null; visible: boolean; onClose: () => void; }' is not assignable to type 'IntrinsicAttributes & BadgeUnlockModalProps'.
+  Property 'visible' does not exist on type 'IntrinsicAttributes & BadgeUnlockModalProps'.
+app/(features)/quiz-mode.tsx(233,38): error TS2339: Property 'answers' does not exist on type 'QuizQuestion'.
+app/(features)/quiz-mode.tsx(233,51): error TS7006: Parameter 'answer' implicitly has an 'any' type.
+app/(features)/quiz-mode.tsx(233,59): error TS7006: Parameter 'index' implicitly has an 'any' type.
+app/(features)/study-mode.tsx(162,90): error TS2339: Property 'front' does not exist on type 'Flashcard'.
+app/(features)/study-mode.tsx(168,101): error TS2339: Property 'back' does not exist on type 'Flashcard'.
+app/(features)/timed-quiz.tsx(100,13): error TS2353: Object literal may only specify known properties, and 'timedQuizzesTaken' does not exist in type '{ quizCompleted?: boolean | undefined; perfectScore?: boolean | undefined; timedQuizTime?: number | undefined; flashcardsReviewed?: number | undefined; }'.
+app/(features)/timed-quiz.tsx(100,33): error TS18047: 'currentStudent' is possibly 'null'.
+app/(features)/timed-quiz.tsx(100,48): error TS2339: Property 'timedQuizzesTaken' does not exist on type 'StudentProfile'.
+app/(features)/timed-quiz.tsx(105,30): error TS2345: Argument of type 'Badge[]' is not assignable to parameter of type 'SetStateAction<Badge | null>'.
+app/(features)/timed-quiz.tsx(110,17): error TS18047: 'currentStudent' is possibly 'null'.
+app/(features)/timed-quiz.tsx(111,20): error TS18047: 'currentStudent' is possibly 'null'.
+app/(features)/timed-quiz.tsx(112,13): error TS2353: Object literal may only specify known properties, and 'timedQuizzesTaken' does not exist in type 'StudentProfile'.
+app/(features)/timed-quiz.tsx(112,33): error TS18047: 'currentStudent' is possibly 'null'.
+app/(features)/timed-quiz.tsx(112,48): error TS2339: Property 'timedQuizzesTaken' does not exist on type 'StudentProfile'.
+app/(features)/timed-quiz.tsx(118,24): error TS18047: 'currentStudent' is possibly 'null'.
+app/(features)/timed-quiz.tsx(120,24): error TS18048: 'subject' is possibly 'undefined'.
+app/(features)/timed-quiz.tsx(121,26): error TS18048: 'subject' is possibly 'undefined'.
+app/(features)/timed-quiz.tsx(209,21): error TS2322: Type '{ badge: Badge | null; visible: boolean; onClose: () => void; }' is not assignable to type 'IntrinsicAttributes & BadgeUnlockModalProps'.
+  Property 'visible' does not exist on type 'IntrinsicAttributes & BadgeUnlockModalProps'.
+app/(features)/timed-quiz.tsx(279,38): error TS2339: Property 'answers' does not exist on type 'QuizQuestion'.
+app/(features)/timed-quiz.tsx(279,51): error TS7006: Parameter 'answer' implicitly has an 'any' type.
+app/(features)/timed-quiz.tsx(279,59): error TS7006: Parameter 'index' implicitly has an 'any' type.
+components/shared/BadgeUnlockModal.tsx(3,24): error TS2307: Cannot find module '@/components/ui/Button' or its corresponding type declarations.
+index.ts(3,17): error TS2307: Cannot find module './App' or its corresponding type declarations.
