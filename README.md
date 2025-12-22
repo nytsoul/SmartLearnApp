@@ -2,6 +2,35 @@
 
 A gamified learning platform built with React Native and Expo, featuring student, teacher, and parent portals with comprehensive quiz, study features, and AI-powered learning.
 
+## 🏁 Getting Started
+
+Follow these steps to get the project running on your local machine.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [Expo Go](https://expo.dev/client) app on your mobile device (iOS/Android)
+
+### Installation
+
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+### Running the App
+
+1. **Start the development server**
+   ```bash
+   npx expo start
+   ```
+
+2. **Open on your device**
+   - **Android**: Scan the QR code using the Expo Go app.
+   - **iOS**: Scan the QR code using the Camera app (opens in Expo Go).
+   - **Emulator**: Press `a` for Android Emulator or `i` for iOS Simulator.
+
 ## 🚀 Features
 
 ### 🎓 Student Features
