@@ -4,56 +4,63 @@
 
 @layer base {
     :root {
+        /* Light Theme Tokens */
+        --background: 0 0% 100%;
+        --foreground: 224 71.4% 4.1%;
+        --card: 0 0% 100%;
+        --card-foreground: 224 71.4% 4.1%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 224 71.4% 4.1%;
+        --primary: 262.1 83.3% 57.8%;
+        --primary-foreground: 210 20% 98%;
+        --secondary: 220 14.3% 95.9%;
+        --secondary-foreground: 220.9 39.3% 11%;
+        --muted: 220 14.3% 95.9%;
+        --muted-foreground: 220 8.9% 46.1%;
+        --accent: 262.1 83.3% 57.8%;
+        --accent-foreground: 220.9 39.3% 11%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 20% 98%;
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 262.1 83.3% 57.8%;
+        --radius: 0.75rem;
+    }
+
+    .dark {
         /* Dark Neo-Glass Theme Tokens */
         --background: 265 84% 10%;
-        /* Deep Violet (#1e1b4b but darker/richer) */
         --foreground: 210 40% 98%;
-        /* White */
-
         --card: 265 50% 15%;
-        /* Dark Violet/Indigo Card base */
         --card-foreground: 210 40% 98%;
-        --card-opacity: 0.25;
-        /* Glass effect opacity */
-
         --popover: 265 84% 10%;
         --popover-foreground: 210 40% 98%;
-
         --primary: 263 90% 51%;
-        /* Vibrant Purple */
         --primary-foreground: 210 40% 98%;
-
         --secondary: 217 19% 27%;
         --secondary-foreground: 210 40% 98%;
-
         --muted: 217 19% 27%;
         --muted-foreground: 215 20% 65%;
-
         --accent: 263 90% 60%;
         --accent-foreground: 210 40% 98%;
-
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 210 40% 98%;
-
         --border: 217 19% 27%;
         --input: 217 19% 27%;
         --ring: 263 90% 51%;
-
-        --radius: 0.75rem;
     }
 }
 
 @layer utilities {
     .glass {
-        @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
+        @apply bg-background/60 backdrop-blur-md border border-border/50 shadow-lg;
     }
 
     .glass-card {
-        @apply bg-black/20 backdrop-blur-xl border border-white/10 shadow-xl;
+        @apply bg-card/40 backdrop-blur-xl border border-border/30 shadow-xl;
     }
 
     .text-glow {
         text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
-        /* Violet glow */
     }
 }

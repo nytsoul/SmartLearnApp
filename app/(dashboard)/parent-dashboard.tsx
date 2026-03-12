@@ -11,7 +11,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function ParentDashboard() {
     const router = useRouter();
-    const { currentParent, students, quizResults, activityLogs, logout } = useApp();
+    const { currentParent, students, quizResults, activityLogs, logout, isDarkMode } = useApp();
     const [selectedPeriod, setSelectedPeriod] = useState<'week' | 'month'>('week');
 
     // Redirect if no parent logged in
@@ -85,15 +85,15 @@ export default function ParentDashboard() {
     return (
         <SafeAreaView className="flex-1 bg-background" edges={['top']}>
             {/* Header */}
-            <View className="px-5 py-4 border-b border-white/5">
+            <View className="px-5 py-4 border-b border-border/50">
                 <View className="flex-row items-center justify-between">
                     <View className="flex-row items-center gap-4">
                         <View className="bg-pink-500/20 rounded-full w-14 h-14 items-center justify-center border border-pink-500/30">
                             <Heart size={28} color="#ec4899" />
                         </View>
                         <View>
-                            <Text className="font-bold text-xl text-white text-glow">{currentParent.name}</Text>
-                            <Text className="text-sm text-gray-400">Parent Dashboard</Text>
+                            <Text className="font-bold text-xl text-foreground text-glow">{currentParent.name}</Text>
+                            <Text className="text-sm text-muted-foreground">Parent Dashboard</Text>
                         </View>
                     </View>
                     <View className="flex-row items-center gap-3">
@@ -103,8 +103,8 @@ export default function ParentDashboard() {
                         >
                             <Bell size={22} color="#ec4899" />
                         </Pressable>
-                        <Pressable onPress={handleLogout} className="p-2.5 bg-white/5 rounded-full border border-white/10">
-                            <LogOut size={22} color="#9ca3af" />
+                        <Pressable onPress={handleLogout} className="p-2.5 bg-card rounded-full border border-border items-center justify-center active:bg-muted">
+                            <LogOut size={22} color={isDarkMode ? "#cbd5e1" : "#475569"} />
                         </Pressable>
                     </View>
                 </View>
@@ -140,20 +140,20 @@ export default function ParentDashboard() {
                     </View>
 
                     {/* Period Selector */}
-                    <View className="flex-row bg-white/5 rounded-2xl p-1 border border-white/10">
+                    <View className="flex-row bg-card rounded-2xl p-1 border border-border">
                         <Pressable
                             onPress={() => setSelectedPeriod('week')}
-                            className={`flex-1 py-3 rounded-xl transition-all ${selectedPeriod === 'week' ? 'bg-white/10 border border-white/10 shadow-sm' : ''}`}
+                            className={`flex-1 py-3 rounded-xl transition-all ${selectedPeriod === 'week' ? 'bg-muted border border-border/50 shadow-sm' : ''}`}
                         >
-                            <Text className={`text-center font-semibold ${selectedPeriod === 'week' ? 'text-pink-400 text-glow' : 'text-gray-400'}`}>
+                            <Text className={`text-center font-semibold ${selectedPeriod === 'week' ? 'text-pink-500 text-glow' : 'text-muted-foreground'}`}>
                                 This Week
                             </Text>
                         </Pressable>
                         <Pressable
                             onPress={() => setSelectedPeriod('month')}
-                            className={`flex-1 py-3 rounded-xl transition-all ${selectedPeriod === 'month' ? 'bg-white/10 border border-white/10 shadow-sm' : ''}`}
+                            className={`flex-1 py-3 rounded-xl transition-all ${selectedPeriod === 'month' ? 'bg-muted border border-border/50 shadow-sm' : ''}`}
                         >
-                            <Text className={`text-center font-semibold ${selectedPeriod === 'month' ? 'text-pink-400 text-glow' : 'text-gray-400'}`}>
+                            <Text className={`text-center font-semibold ${selectedPeriod === 'month' ? 'text-pink-500 text-glow' : 'text-muted-foreground'}`}>
                                 This Month
                             </Text>
                         </Pressable>
@@ -161,32 +161,30 @@ export default function ParentDashboard() {
 
                     {/* Stats Overview */}
                     <View className="flex-row flex-wrap gap-3">
-                        <View className="flex-1 min-w-[47%] bg-white/5 p-5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                        <View className="flex-1 min-w-[47%] bg-card p-5 rounded-2xl border border-border backdrop-blur-sm">
                             <BookOpen size={28} color="#a855f7" strokeWidth={2} />
-                            <Text className="text-3xl font-bold text-white mt-3 text-glow">{stats?.totalQuizzes || 0}</Text>
-                            <Text className="text-sm text-gray-400 mt-1 uppercase tracking-wide font-bold text-[10px]">Quizzes Taken</Text>
+                            <Text className="text-3xl font-bold text-foreground mt-3 text-glow">{stats?.totalQuizzes || 0}</Text>
+                            <Text className="text-sm text-muted-foreground mt-1 uppercase tracking-wide font-bold text-[10px]">Quizzes Taken</Text>
                         </View>
-                        <View className="flex-1 min-w-[47%] bg-white/5 p-5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                        <View className="flex-1 min-w-[47%] bg-card p-5 rounded-2xl border border-border backdrop-blur-sm">
                             <Award size={28} color="#10b981" strokeWidth={2} />
-                            <Text className="text-3xl font-bold text-white mt-3 text-glow">{stats?.avgScore || 0}%</Text>
-                            <Text className="text-sm text-gray-400 mt-1 uppercase tracking-wide font-bold text-[10px]">Avg. Score</Text>
+                            <Text className="text-3xl font-bold text-foreground mt-3 text-glow">{stats?.avgScore || 0}%</Text>
+                            <Text className="text-sm text-muted-foreground mt-1 uppercase tracking-wide font-bold text-[10px]">Avg. Score</Text>
                         </View>
-                        <View className="flex-1 min-w-[47%] bg-white/5 p-5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                        <View className="flex-1 min-w-[47%] bg-card p-5 rounded-2xl border border-border backdrop-blur-sm">
                             <Clock size={28} color="#facc15" strokeWidth={2} />
-                            <Text className="text-3xl font-bold text-white mt-3 text-glow">{stats?.totalTimeMinutes || 0}</Text>
-                            <Text className="text-sm text-gray-400 mt-1 uppercase tracking-wide font-bold text-[10px]">Minutes Studied</Text>
+                            <Text className="text-3xl font-bold text-foreground mt-3 text-glow">{stats?.totalTimeMinutes || 0}</Text>
+                            <Text className="text-sm text-muted-foreground mt-1 uppercase tracking-wide font-bold text-[10px]">Minutes Studied</Text>
                         </View>
-                        <View className="flex-1 min-w-[47%] bg-white/5 p-5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                        <View className="flex-1 min-w-[47%] bg-card p-5 rounded-2xl border border-border backdrop-blur-sm">
                             <Zap size={28} color="#ec4899" strokeWidth={2} />
-                            <Text className="text-3xl font-bold text-white mt-3 text-glow">{stats?.subjectsAttempted || 0}</Text>
-                            <Text className="text-sm text-gray-400 mt-1 uppercase tracking-wide font-bold text-[10px]">Subjects</Text>
+                            <Text className="text-3xl font-bold text-foreground mt-3 text-glow">{stats?.subjectsAttempted || 0}</Text>
+                            <Text className="text-sm text-muted-foreground mt-1 uppercase tracking-wide font-bold text-[10px]">Subjects</Text>
                         </View>
-                    </View>
-
-                    {/* Strengths */}
+                    </Vie                    {/* Strengths */}
                     {stats && stats.strengths.length > 0 && (
                         <View>
-                            <Text className="text-lg font-bold text-white mb-4 flex-row items-center gap-2">
+                            <Text className="text-lg font-bold text-foreground mb-4 flex-row items-center gap-2">
                                 <Text>💪 Strengths</Text>
                             </Text>
                             <View className="gap-3">
@@ -195,7 +193,7 @@ export default function ParentDashboard() {
                                         <View className="flex-row items-center gap-4">
                                             <Text className="text-4xl filter drop-shadow-md">{subject.icon}</Text>
                                             <View className="flex-1">
-                                                <Text className="font-bold text-white text-lg mb-2">{subject.name}</Text>
+                                                <Text className="font-bold text-foreground text-lg mb-2">{subject.name}</Text>
                                                 <View className="flex-row items-center gap-3">
                                                     <View className="flex-1 h-2.5 bg-green-500/20 rounded-full overflow-hidden border border-green-500/10">
                                                         <View
@@ -203,9 +201,9 @@ export default function ParentDashboard() {
                                                             style={{ width: `${subject.avgScore}%` as any }}
                                                         />
                                                     </View>
-                                                    <Text className="font-bold text-green-400 text-sm">{subject.avgScore}%</Text>
+                                                    <Text className="font-bold text-green-500 text-sm">{subject.avgScore}%</Text>
                                                 </View>
-                                                <Text className="text-xs text-gray-400 mt-2 font-medium bg-black/10 self-start px-2 py-0.5 rounded-md border border-white/5">{subject.attempts} quizzes</Text>
+                                                <Text className="text-xs text-muted-foreground mt-2 font-medium bg-muted self-start px-2 py-0.5 rounded-md border border-border">{subject.attempts} quizzes</Text>
                                             </View>
                                         </View>
                                     </View>
@@ -213,18 +211,17 @@ export default function ParentDashboard() {
                             </View>
                         </View>
                     )}
-
-                    {/* Needs Improvement */}
+                      {/* Needs Improvement */}
                     {stats && stats.weaknesses.length > 0 && (
                         <View>
-                            <Text className="text-lg font-bold text-white mb-4">📚 Needs Improvement</Text>
+                            <Text className="text-lg font-bold text-foreground mb-4">📚 Needs Improvement</Text>
                             <View className="gap-3">
                                 {stats.weaknesses.map((subject) => (
                                     <View key={subject.id} className="bg-orange-500/10 p-5 rounded-2xl border border-orange-500/20 backdrop-blur-sm">
                                         <View className="flex-row items-center gap-4">
                                             <Text className="text-4xl filter drop-shadow-md">{subject.icon}</Text>
                                             <View className="flex-1">
-                                                <Text className="font-bold text-white text-lg mb-2">{subject.name}</Text>
+                                                <Text className="font-bold text-foreground text-lg mb-2">{subject.name}</Text>
                                                 <View className="flex-row items-center gap-3">
                                                     <View className="flex-1 h-2.5 bg-orange-500/20 rounded-full overflow-hidden border border-orange-500/10">
                                                         <View
@@ -232,40 +229,38 @@ export default function ParentDashboard() {
                                                             style={{ width: `${subject.avgScore}%` as any }}
                                                         />
                                                     </View>
-                                                    <Text className="font-bold text-orange-400 text-sm">{subject.avgScore}%</Text>
+                                                    <Text className="font-bold text-orange-500 text-sm">{subject.avgScore}%</Text>
                                                 </View>
-                                                <Text className="text-xs text-gray-400 mt-2 font-medium bg-black/10 self-start px-2 py-0.5 rounded-md border border-white/5">{subject.attempts} quizzes</Text>
+                                                <Text className="text-xs text-muted-foreground mt-2 font-medium bg-muted self-start px-2 py-0.5 rounded-md border border-border">{subject.attempts} quizzes</Text>
                                             </View>
                                         </View>
-                                    </View>
-                                ))}
                             </View>
                         </View>
                     )}
 
                     {/* Recommendations */}
                     <View className="mb-6">
-                        <Text className="text-lg font-bold text-white mb-4">💡 Recommendations</Text>
-                        <View className="bg-white/5 rounded-2xl border border-white/10 overflow-hidden backdrop-blur-md">
-                            <View className="p-5 border-b border-white/10 flex-row items-center gap-4">
+                        <Text className="text-lg font-bold text-foreground mb-4">💡 Recommendations</Text>
+                        <View className="bg-card rounded-2xl border border-border overflow-hidden backdrop-blur-md">
+                            <View className="p-5 border-b border-border flex-row items-center gap-4">
                                 <View className="bg-purple-500/20 p-2.5 rounded-full border border-purple-500/30"><Target size={24} color="#a855f7" /></View>
                                 <View className="flex-1">
-                                    <Text className="font-bold text-white mb-0.5">Keep up the streak!</Text>
-                                    <Text className="text-sm text-gray-400 leading-4">Encourage daily practice to maintain {child.streak}-day streak</Text>
+                                    <Text className="font-bold text-foreground mb-0.5">Keep up the streak!</Text>
+                                    <Text className="text-sm text-muted-foreground leading-4">Encourage daily practice to maintain {child.streak}-day streak</Text>
                                 </View>
                             </View>
-                            <View className="p-5 border-b border-white/10 flex-row items-center gap-4">
+                            <View className="p-5 border-b border-border flex-row items-center gap-4">
                                 <View className="bg-green-500/20 p-2.5 rounded-full border border-green-500/30"><TrendingUp size={24} color="#4ade80" /></View>
                                 <View className="flex-1">
-                                    <Text className="font-bold text-white mb-0.5">Focus on weak subjects</Text>
-                                    <Text className="text-sm text-gray-400 leading-4">Spend extra time on subjects with lower scores</Text>
+                                    <Text className="font-bold text-foreground mb-0.5">Focus on weak subjects</Text>
+                                    <Text className="text-sm text-muted-foreground leading-4">Spend extra time on subjects with lower scores</Text>
                                 </View>
                             </View>
                             <View className="p-5 flex-row items-center gap-4">
                                 <View className="bg-yellow-500/20 p-2.5 rounded-full border border-yellow-500/30"><Award size={24} color="#facc15" /></View>
                                 <View className="flex-1">
-                                    <Text className="font-bold text-white mb-0.5">Celebrate achievements</Text>
-                                    <Text className="text-sm text-gray-400 leading-4">Motivate with rewards for badges earned</Text>
+                                    <Text className="font-bold text-foreground mb-0.5">Celebrate achievements</Text>
+                                    <Text className="text-sm text-muted-foreground leading-4">Motivate with rewards for badges earned</Text>
                                 </View>
                             </View>
                         </View>
@@ -273,8 +268,8 @@ export default function ParentDashboard() {
 
                     {/* Recent Activity */}
                     <View>
-                        <Text className="text-lg font-bold text-white mb-4">📊 Recent Activity</Text>
-                        <View className="bg-white/5 rounded-2xl border border-white/10 overflow-hidden backdrop-blur-md">
+                        <Text className="text-lg font-bold text-foreground mb-4">📊 Recent Activity</Text>
+                        <View className="bg-card rounded-2xl border border-border overflow-hidden backdrop-blur-md">
                             {activityLogs
                                 .filter(log => log.studentId === child.id)
                                 .slice(0, 5)
@@ -286,7 +281,7 @@ export default function ParentDashboard() {
                                     return (
                                         <View
                                             key={log.id}
-                                            className={`p-5 flex-row items-center gap-4 ${!isLast ? 'border-b border-white/5' : ''}`}
+                                            className={`p-5 flex-row items-center gap-4 ${!isLast ? 'border-b border-border' : ''}`}
                                         >
                                             <View className={`w-12 h-12 rounded-full items-center justify-center border bg-opacity-20 ${log.type === 'quiz' ? 'bg-purple-500/20 border-purple-500/30' :
                                                     log.type === 'study' ? 'bg-blue-500/20 border-blue-500/30' :
@@ -299,7 +294,7 @@ export default function ParentDashboard() {
                                                 {log.type === 'daily-challenge' && <Zap size={20} color="#ec4899" />}
                                             </View>
                                             <View className="flex-1">
-                                                <Text className="font-bold text-white text-base">
+                                                <Text className="font-bold text-foreground text-base">
                                                     {log.type === 'quiz' && `Completed ${log.subjectName} Quiz`}
                                                     {log.type === 'study' && `Studied ${log.subjectName}`}
                                                     {log.type === 'achievement' && 'Unlocked Achievement'}
@@ -307,13 +302,13 @@ export default function ParentDashboard() {
                                                 </Text>
                                                 <View className="flex-row items-center gap-2 mt-1">
                                                     {log.score !== undefined && (
-                                                        <Text className="text-xs text-gray-300 bg-white/10 px-1.5 py-0.5 rounded border border-white/5">Score: {log.score}%</Text>
+                                                        <Text className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded border border-border">Score: {log.score}%</Text>
                                                     )}
-                                                    <Text className="text-xs text-gray-500">• {timeAgo}</Text>
+                                                    <Text className="text-xs text-muted-foreground">• {timeAgo}</Text>
                                                 </View>
                                                 <View className="flex-row items-center gap-3 mt-1.5">
-                                                    <Text className="text-xs text-purple-400 font-bold">+{log.xpEarned} XP</Text>
-                                                    <Text className="text-xs text-yellow-400 font-bold">+{log.coinsEarned} Coins</Text>
+                                                    <Text className="text-xs text-primary font-bold">+{log.xpEarned} XP</Text>
+                                                    <Text className="text-xs text-yellow-500 font-bold">+{log.coinsEarned} Coins</Text>
                                                 </View>
                                             </View>
                                             <CheckCircle size={20} color="#4ade80" />
@@ -322,9 +317,9 @@ export default function ParentDashboard() {
                                 })}
                             {activityLogs.filter(log => log.studentId === child.id).length === 0 && (
                                 <View className="p-10 items-center opacity-50">
-                                    <Activity size={48} color="#9ca3af" />
-                                    <Text className="text-gray-400 mt-4 text-center font-medium text-lg">No activity yet</Text>
-                                    <Text className="text-sm text-gray-500 text-center mt-1">Activity will appear here once your child starts learning</Text>
+                                    <Activity size={48} color={isDarkMode ? "#94a3b8" : "#64748b"} />
+                                    <Text className="text-muted-foreground mt-4 text-center font-medium text-lg">No activity yet</Text>
+                                    <Text className="text-sm text-muted-foreground text-center mt-1">Activity will appear here once your child starts learning</Text>
                                 </View>
                             )}
                         </View>

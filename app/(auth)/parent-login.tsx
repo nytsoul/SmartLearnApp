@@ -9,6 +9,7 @@ import { useApp } from '@/contexts/AppContext';
 
 export default function ParentLogin() {
     const router = useRouter();
+    // Example deep link for this app: smartlearning://
     const { students, parents, setCurrentParent, addParent } = useApp();
     const [view, setView] = useState<'select' | 'new'>('select');
     const [childId, setChildId] = useState('');
@@ -88,6 +89,7 @@ export default function ParentLogin() {
 
     return (
         <SafeAreaView className="flex-1 bg-background" edges={['top']}>
+            {/* You can open this app using the custom URI scheme: smartlearning:// */}
             <ScrollView className="flex-1" contentContainerStyle={{ padding: 20 }}>
                 {/* Header */}
                 <View className="mb-8">

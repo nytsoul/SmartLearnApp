@@ -5,6 +5,7 @@ export default function DashboardLayout() {
         <Stack screenOptions={{ headerShown: false, animation: 'fade' }}>
             <Stack.Screen name="student-dashboard" />
             <Stack.Screen name="teacher-dashboard" />
+            <Stack.Screen name="profile" />
             <Stack.Screen name="subject" />
         </Stack>
     );

@@ -9,6 +9,9 @@ export default function FeaturesLayout() {
             <Stack.Screen name="leaderboard" options={{ title: 'Leaderboard' }} />
             <Stack.Screen name="achievements" options={{ title: 'Achievements' }} />
             <Stack.Screen name="daily-challenge" options={{ title: 'Daily Challenge' }} />
+            <Stack.Screen name="lectures" options={{ title: 'Video Lectures' }} />
+            <Stack.Screen name="study-plan" options={{ title: 'Study Plan' }} />
+            <Stack.Screen name="quiz-results" options={{ title: 'Quiz Results' }} />
         </Stack>
     );
 }

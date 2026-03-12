@@ -12,7 +12,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function TeacherDashboard() {
     const router = useRouter();
-    const { currentTeacher, students, quizResults, logout } = useApp();
+    const { currentTeacher, students, quizResults, logout, isDarkMode } = useApp();
     const [selectedStandard, setSelectedStandard] = useState<number>(5);
 
     // Redirect if no teacher logged in
@@ -66,19 +66,19 @@ export default function TeacherDashboard() {
     return (
         <SafeAreaView className="flex-1 bg-background" edges={['top']}>
             {/* Header */}
-            <View className="px-5 py-4 border-b border-white/10">
+            <View className="px-5 py-4 border-b border-border/50">
                 <View className="flex-row items-center justify-between">
                     <View className="flex-row items-center gap-3">
-                        <View className="bg-purple-500/20 rounded-full w-14 h-14 items-center justify-center border border-purple-500/30">
+                        <View className="bg-primary/20 rounded-full w-14 h-14 items-center justify-center border border-primary/30">
                             <Text className="text-2xl">👩‍🏫</Text>
                         </View>
                         <View>
-                            <Text className="font-bold text-xl text-white text-glow">{currentTeacher.name}</Text>
-                            <Text className="text-sm text-gray-300">Teacher Dashboard</Text>
+                            <Text className="font-bold text-xl text-foreground text-glow">{currentTeacher.name}</Text>
+                            <Text className="text-sm text-muted-foreground">Teacher Dashboard</Text>
                         </View>
                     </View>
-                    <Pressable onPress={handleLogout} className="p-2 bg-white/5 rounded-full border border-white/10 active:bg-white/10">
-                        <LogOut size={20} color="#cbd5e1" />
+                    <Pressable onPress={handleLogout} className="p-2 bg-card rounded-full border border-border items-center justify-center active:bg-muted">
+                        <LogOut size={20} color={isDarkMode ? "#cbd5e1" : "#475569"} />
                     </Pressable>
                 </View>
             </View>
@@ -87,7 +87,7 @@ export default function TeacherDashboard() {
                 <View className="px-5 py-6 gap-8">
                     {/* Class Selector */}
                     <View>
-                        <Text className="text-xl font-bold text-white mb-4 pl-1">Select Class</Text>
+                        <Text className="text-xl font-bold text-foreground mb-4 pl-1">Select Class</Text>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                             <View className="flex-row gap-2">
                                 {Array.from({ length: 12 }, (_, i) => i + 1).map((std) => (
@@ -97,13 +97,13 @@ export default function TeacherDashboard() {
                                         className={cn(
                                             'px-6 py-3 rounded-xl min-w-[90px] items-center border',
                                             selectedStandard === std
-                                                ? 'bg-purple-600 border-purple-400'
-                                                : 'bg-white/5 border-white/10'
+                                                ? 'bg-primary border-primary/50'
+                                                : 'bg-card border-border'
                                         )}
                                     >
                                         <Text className={cn(
                                             'font-semibold text-base',
-                                            selectedStandard === std ? 'text-white' : 'text-gray-400'
+                                            selectedStandard === std ? 'text-primary-foreground' : 'text-muted-foreground'
                                         )}>
                                             Class {std}
                                         </Text>
@@ -118,29 +118,29 @@ export default function TeacherDashboard() {
                         <Card className="flex-1 min-w-[47%] bg-blue-500/10 border-blue-500/20 backdrop-blur-md">
                             <CardContent className="p-5">
                                 <Users size={28} color="#60a5fa" strokeWidth={2} />
-                                <Text className="text-3xl font-bold text-white mt-3">{classStudents.length}</Text>
-                                <Text className="text-sm text-blue-200 mt-1">Students</Text>
+                                <Text className="text-3xl font-bold text-foreground mt-3">{classStudents.length}</Text>
+                                <Text className="text-sm text-blue-500/70 mt-1 font-medium">Students</Text>
                             </CardContent>
                         </Card>
                         <Card className="flex-1 min-w-[47%] bg-emerald-500/10 border-emerald-500/20 backdrop-blur-md">
                             <CardContent className="p-5">
                                 <BarChart3 size={28} color="#34d399" strokeWidth={2} />
-                                <Text className="text-3xl font-bold text-white mt-3">{stats.avgScore}%</Text>
-                                <Text className="text-sm text-emerald-200 mt-1">Avg. Score</Text>
+                                <Text className="text-3xl font-bold text-foreground mt-3">{stats.avgScore}%</Text>
+                                <Text className="text-sm text-emerald-500/70 mt-1 font-medium">Avg. Score</Text>
                             </CardContent>
                         </Card>
                         <Card className="flex-1 min-w-[47%] bg-violet-500/10 border-violet-500/20 backdrop-blur-md">
                             <CardContent className="p-5">
                                 <BookOpen size={28} color="#a78bfa" strokeWidth={2} />
-                                <Text className="text-3xl font-bold text-white mt-3">{stats.totalQuizzes}</Text>
-                                <Text className="text-sm text-violet-200 mt-1">Quizzes Taken</Text>
+                                <Text className="text-3xl font-bold text-foreground mt-3">{stats.totalQuizzes}</Text>
+                                <Text className="text-sm text-violet-500/70 mt-1 font-medium">Quizzes Taken</Text>
                             </CardContent>
                         </Card>
                         <Card className="flex-1 min-w-[47%] bg-orange-500/10 border-orange-500/20 backdrop-blur-md">
                             <CardContent className="p-5">
                                 <TrendingUp size={28} color="#fb923c" strokeWidth={2} />
-                                <Text className="text-3xl font-bold text-white mt-3">{stats.activeStudents}</Text>
-                                <Text className="text-sm text-orange-200 mt-1">Active Students</Text>
+                                <Text className="text-3xl font-bold text-foreground mt-3">{stats.activeStudents}</Text>
+                                <Text className="text-sm text-orange-500/70 mt-1 font-medium">Active Students</Text>
                             </CardContent>
                         </Card>
                     </View>
@@ -158,10 +158,10 @@ export default function TeacherDashboard() {
                                 return (
                                     <View
                                         key={subject.id}
-                                        className="w-[48%] bg-white/5 p-4 rounded-2xl border border-white/10"
+                                        className="w-[48%] bg-card p-4 rounded-2xl border border-border"
                                     >
                                         <Text className="text-4xl mb-3">{subject.icon}</Text>
-                                        <Text className="font-bold text-base text-white mb-2" numberOfLines={1}>
+                                        <Text className="font-bold text-base text-foreground mb-2" numberOfLines={1}>
                                             {subject.name}
                                         </Text>
                                         {subjectAvg !== null ? (
@@ -215,14 +215,14 @@ export default function TeacherDashboard() {
 
                     {/* Student List */}
                     <View>
-                        <Text className="text-xl font-bold text-white mb-4 pl-1">Students</Text>
+                        <Text className="text-xl font-bold text-foreground mb-4 pl-1">Students</Text>
                         {classStudents.length > 0 ? (
-                            <View className="bg-white/5 rounded-2xl border border-white/10 overflow-hidden">
+                            <View className="bg-card rounded-2xl border border-border overflow-hidden">
                                 {/* Header */}
-                                <View className="flex-row bg-white/5 px-4 py-3 border-b border-white/10">
-                                    <Text className="flex-1 font-semibold text-gray-300">Student</Text>
-                                    <Text className="w-16 font-semibold text-gray-300 text-center">XP</Text>
-                                    <Text className="w-16 font-semibold text-gray-300 text-center">Streak</Text>
+                                <View className="flex-row bg-muted/50 px-4 py-3 border-b border-border">
+                                    <Text className="flex-1 font-semibold text-muted-foreground">Student</Text>
+                                    <Text className="w-16 font-semibold text-muted-foreground text-center">XP</Text>
+                                    <Text className="w-16 font-semibold text-muted-foreground text-center">Streak</Text>
                                 </View>
                                 {/* Students */}
                                 {classStudents.sort((a, b) => b.xp - a.xp).map((student, i) => {
@@ -239,7 +239,7 @@ export default function TeacherDashboard() {
                                                 <Text className="text-xl">{avatarData?.emoji || '👤'}</Text>
                                                 <View className="flex-1">
                                                     <View className="flex-row items-center gap-2">
-                                                        <Text className="font-semibold text-white" numberOfLines={1}>
+                                                        <Text className="font-semibold text-foreground" numberOfLines={1}>
                                                             {student.name}
                                                         </Text>
                                                         {i < 3 && (
@@ -250,8 +250,8 @@ export default function TeacherDashboard() {
                                                     </View>
                                                 </View>
                                             </View>
-                                            <Text className="w-16 text-purple-400 font-bold text-center">{student.xp}</Text>
-                                            <Text className="w-16 text-orange-400 font-bold text-center">{student.streak}</Text>
+                                            <Text className="w-16 text-primary font-bold text-center">{student.xp}</Text>
+                                            <Text className="w-16 text-orange-500 font-bold text-center">{student.streak}</Text>
                                         </View>
                                     );
                                 })}
@@ -272,28 +272,28 @@ export default function TeacherDashboard() {
                     {/* Quiz Management */}
                     <View className="mb-6 mt-2">
                         <View className="flex-row items-center justify-between mb-4">
-                            <Text className="text-xl font-bold text-white pl-1">Quiz Management</Text>
+                            <Text className="text-xl font-bold text-foreground pl-1">Quiz Management</Text>
                             <Pressable
                                 onPress={handleUploadPDF}
-                                className="bg-blue-600 px-4 py-2.5 rounded-xl flex-row items-center gap-2 active:bg-blue-700 border border-blue-500/50 shadow-lg shadow-blue-500/20"
+                                className="bg-primary px-4 py-2.5 rounded-xl flex-row items-center gap-2 active:bg-primary/80 border border-primary/50 shadow-lg shadow-primary/20"
                             >
                                 <Upload size={18} color="white" />
                                 <Text className="text-white font-semibold text-sm">Upload PDF</Text>
                             </Pressable>
                         </View>
-
+ 
                         {/* Empty State */}
-                        <View className="bg-white/5 rounded-2xl border border-white/10 p-8 items-center">
-                            <View className="bg-white/10 rounded-full p-4 mb-3">
-                                <Brain size={32} color="#94a3b8" />
+                        <View className="bg-card rounded-2xl border border-border p-8 items-center">
+                            <View className="bg-muted rounded-full p-4 mb-3">
+                                <Brain size={32} color={isDarkMode ? "#94a3b8" : "#64748b"} />
                             </View>
-                            <Text className="text-lg font-bold text-white mb-2">No Quizzes Generated Yet</Text>
-                            <Text className="text-gray-400 text-center mb-6">
+                            <Text className="text-lg font-bold text-foreground mb-2">No Quizzes Generated Yet</Text>
+                            <Text className="text-muted-foreground text-center mb-6">
                                 Upload a PDF to automatically generate quiz questions for Class {selectedStandard}
                             </Text>
                             <Pressable
                                 onPress={handleUploadPDF}
-                                className="bg-blue-600 px-6 py-3 rounded-xl flex-row items-center gap-2 active:bg-blue-700 border border-blue-500/50 shadow-lg shadow-blue-500/20"
+                                className="bg-primary px-6 py-3 rounded-xl flex-row items-center gap-2 active:bg-primary/80 border border-primary/50 shadow-lg shadow-primary/20"
                             >
                                 <Upload size={18} color="white" />
                                 <Text className="text-white font-semibold">Generate Your First Quiz</Text>

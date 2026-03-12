@@ -38,10 +38,20 @@ function AuthCheck() {
 export default function RootLayout() {
     return (
         <AppProvider>
+            <ThemeWrapper />
+        </AppProvider>
+    );
+}
+
+function ThemeWrapper() {
+    const { isDarkMode } = useApp();
+    
+    return (
+        <View className={`flex-1 ${isDarkMode ? 'dark bg-background' : 'bg-background'}`}>
             <Stack screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="index" />
                 <Stack.Screen name="(auth)" />
             </Stack>
-        </AppProvider>
+        </View>
     );
 }

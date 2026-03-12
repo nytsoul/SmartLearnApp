@@ -48,12 +48,33 @@ interface AppContextType {
 
     // Utility functions
     logout: () => void;
+    // Theme state
+    isDarkMode: boolean;
+    toggleTheme: () => void;
     isLoading: boolean;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+import { useColorScheme } from 'nativewind';
+
 export function AppProvider({ children }: { children: ReactNode }) {
+    // Theme management
+    const { colorScheme, setColorScheme, toggleColorScheme } = useColorScheme();
+    const [storedTheme, setStoredTheme] = useAsyncStorage<'light' | 'dark' | 'system'>('steam-theme', 'system');
+
+    useEffect(() => {
+        if (storedTheme !== 'system') {
+            setColorScheme(storedTheme);
+        }
+    }, [storedTheme, setColorScheme]);
+
+    const handleToggleTheme = useCallback(() => {
+        const nextTheme = colorScheme === 'dark' ? 'light' : 'dark';
+        setStoredTheme(nextTheme);
+        setColorScheme(nextTheme);
+    }, [colorScheme, setStoredTheme, setColorScheme]);
+
     // Simplified online status - assume online for now
     const isOnline = true;
 
@@ -170,7 +191,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
             toggleQuizActive,
             isOnline,
             logout,
-            isLoading
+            isLoading,
+            isDarkMode: colorScheme === 'dark',
+            toggleTheme: handleToggleTheme
         }}>
             {children}
         </AppContext.Provider>
