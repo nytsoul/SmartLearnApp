@@ -5,12 +5,7 @@ A gamified learning platform built with React Native and Expo, featuring student
 ## 🏁 Getting Started
 
 Follow these steps to get the project running on your local machine.
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [Expo Go](https://expo.dev/client) app on your mobile device (iOS/Android)
+ app on your mobile device (iOS/Android)
 
 ### Installation
 
